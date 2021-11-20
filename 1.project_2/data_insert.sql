@@ -6,6 +6,10 @@
   MATCH(n:APPLY) DETACH
   DELETE n
 
+  -- #cypher查询多重关系
+  MATCH p=()-[r:KNOWS]-()-[r1:PERSON_INFO]-()-[r2:RECEIVE]-() RETURN p LIMIT 200
+
+
 -- #apoc语法，Connect工程文件也可使用, APOC语法的导入速度更快, 属性也不用单独配置
 -- #导入实体和属性
     CALL apoc.periodic.iterate('CALL apoc.load.csv(\'./hw2/person.csv\') yield map as row return row',
@@ -25,9 +29,10 @@
                             {batchSize:10000, iterateList:true, parallel:true})
 
 -- 导入关系
-  MATCH(n:PERSON),(m:PHONE) where n.phone = m.from  merge(n)<-[r:RECEIVE]-(m) return r
-  MATCH(n:PERSON),(m:PHONE) where n.phone = m.to  merge(n)-[c:CALL]->(m) return c
+  MATCH(n:PERSON),(m:PHONE) where n.phone = m.from  merge(n)-[r:CALL]->(m) return r
+  MATCH(n:PERSON),(m:PHONE) where n.phone = m.to  merge(n)<-[c:RECEIVE]-(m) return c
   MATCH(n:PERSON),(m:APPLY) where n.id = m.applicant  merge(n)<-[c:PERSON_INFO]-(m) return c
   MATCH(n:PERSON),(m:BLACKINFO) where n.phone = m.number  merge(n)-[c:check_black]->(m) return c
+  MATCH(n:PERSON),(m:PHONE),(t:PERSON) where n.phone = m.from  and m.to = t.phone merge(n)-[r:KNOWS]->(t) return r
   
 

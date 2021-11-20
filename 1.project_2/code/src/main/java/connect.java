@@ -24,14 +24,16 @@ public class connect {
         "                                {batchSize:10000, iterateList:true, parallel:true})";
         session.run(blackinfo_cypher);
 
-        String relation_cypher = "MATCH(n:PERSON),(m:PHONE) where n.phone = m.from  merge(n)<-[r:RECEIVE]-(m) return r";
+        String relation_cypher = "MATCH(n:PERSON),(m:PHONE) where n.phone = m.from  merge(n)-[r:CALL]->(m) return r";
         session.run(relation_cypher);
-        String relation_cypher2 = "MATCH(n:PERSON),(m:PHONE) where n.phone = m.to  merge(n)-[c:CALL]->(m) return c";
+        String relation_cypher2 = "MATCH(n:PERSON),(m:PHONE) where n.phone = m.to  merge(n)<-[c:RECEIVE]-(m) return c";
         session.run(relation_cypher2);
         String relation_cypher3 = "MATCH(n:PERSON),(m:APPLY) where n.id = m.applicant  merge(n)<-[c:PERSON_INFO]-(m) return c";
         session.run(relation_cypher3);
         String relation_cypher4 = "MATCH(n:PERSON),(m:BLACKINFO) where n.phone = m.number  merge(n)-[c:CHECK_BLACK]->(m) return c";
         session.run(relation_cypher4);
+        String relation_cypher5 = " MATCH(n:PERSON),(m:PHONE),(t:PERSON) where n.phone = m.from  and m.to = t.phone merge(n)-[r:KNOWS]->(t) return r";
+        session.run(relation_cypher5);
         session.close();
         driver.close();
     }
