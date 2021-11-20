@@ -1,4 +1,5 @@
 #7.kafka命令行--单点kafka环境部署
+#kafka安装路径:/Users/zhengqixin/kafka_2.13-3.0.0
 	7.1 #启动zookeeper(所有的主从配置、管理都在这)
 		bin/zookeeper-server-start.sh config/zookeeper.properties
 

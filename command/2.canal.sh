@@ -1,3 +1,4 @@
+#canal安装路径:/Users/zhengqixin/canal
 # 参考：https://github.com/alibaba/canal/wiki/QuickStart
 
 #1.下载canal
