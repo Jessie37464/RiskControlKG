@@ -1,0 +1,26 @@
+server:
+  port:8888
+
+logging:
+  path:logs
+  file:ruleEngine.log
+
+spring:
+  application:
+    name: ruleEngine
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:jdbc:mysql://rm-2ze638ua1roqbuaxl8o.mysql.rds.aliyuns.com:3306/knowledge_graph?serverTimezone=GMT
+    username: root
+    password: txkj2018
+
+mybatis:
+  type-aliases-package: com-greedy-ai.model
+  mapper-locations:
+    - mapper/*
+
+neo4j:
+  datasource:
+    uri:bolt://localhost:7687
+    username:neo4j
+    password:123
