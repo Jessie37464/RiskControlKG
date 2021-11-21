@@ -4,6 +4,9 @@
     match(p:PERSON) where p.id="20000348" 
     return p.sex
 
+    match(p:PERSON) where p.id=$id
+    return p.sex
+
     -- 申请人在不在黑名单中(person,flag)
     match(p:PERSON) where p.id="20000348" 
     return p.flag

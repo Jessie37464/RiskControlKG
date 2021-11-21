@@ -1,7 +1,7 @@
 -- # 导入语句
   位于0.data2sql.ipynb
 
--- # 搜索语句
+-- # 搜索语句mysl
 SELECT * FROM kg.apply
 SELECT * FROM kg.person limit 10
 SELECT * FROM kg.phone limit 10
