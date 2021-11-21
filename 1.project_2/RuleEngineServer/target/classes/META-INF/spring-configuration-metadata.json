@@ -1,0 +1,27 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.greedy.ai.config.Neo4jProperties",
+      "name": "neo4j.datasource",
+      "type": "com.greedy.ai.config.Neo4jProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.greedy.ai.config.Neo4jProperties",
+      "name": "neo4j.datasource.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.greedy.ai.config.Neo4jProperties",
+      "name": "neo4j.datasource.uri",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.greedy.ai.config.Neo4jProperties",
+      "name": "neo4j.datasource.username",
+      "type": "java.lang.String"
+    }
+  ]
+}
